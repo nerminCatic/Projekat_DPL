@@ -1,0 +1,80 @@
+<!--Form for password change for user that is logged in-->
+<head>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head> 
+	<div class="bcgnonee"> 
+		<!--navbar-->
+		<nav class="navbar navbar-custom navbar-fixed-top ribbon nblue" role="navigation">
+		    <div class="localization-bs-en" localization-bs-en></div>
+		     <div class="container" ng-controller="HomeAdminController">
+		        <div class="navbar-header page-scroll">
+		           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+		              <i class="fa fa-bars"></i>
+		        </button>
+		        <a class="navbar-brand" href ng-click="openHomeAdmin()">
+		           <h1 class="naslov1">eSTAMPARIJA</h1>
+		        </a>
+		          </div>
+		          <div class="collapse navbar-collapse navbar-right navbar-main-collapse navbar-font">
+		           <ul class="nav navbar-nav navbar-font">
+		           <li><a href ng-click="openHomeAdmin()"><span>{{ "HOME" | translate }}</span></a></li>
+		         <li><a href ng-click="logout()"><span>{{ "LOGOUT" | translate }}</span></a></li>
+		            </ul>
+		          </div>
+		       </div>
+		   </nav>
+		<!--/.navbar-->
+		</br></br></br></br></br></br> 
+		<div class="heading-contact-title">
+	            <div class="container">
+	            <div class="row">
+	                <div class="col-lg-8 col-lg-offset-2">
+	                    <div class="wow bounceInDown animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">
+	                    <div class="section-heading">
+	                    <h2>{{ 'UPROLE' | translate }}</h2>
+	                    <i class="fa fa-2x fa-angle-down"></i>
+
+	                    </div>
+	                    </div>
+	                </div>
+	            </div>
+	            </div>
+	    </div> 
+	    <div class="container">    
+		<div class="bcgnone" style="height:600px">
+	    <div class="edit-user-by-mng-wall">
+
+	    <form class="form-register form-inline" role="form" name="myForm" ng-controller="UpdateRoleControler2">
+
+			  	<!-- input name-->
+			  	<div class="input-prepend  form-group has success has-feedback">
+			  		<label class="control-label" for="inputSuccess4"></label>
+				  	<input name="name" pattern="^([a-zA-Z0-9_ ]){3,}$" maxlength="20" class="form-control" type="text" placeholder="Ime" ng-model="role.name" required autofocus id="inputSuccess4"/>
+				  	<span class="glyphicon glyphicon-user form-control-feedback"></span></br></br>
+				  	<!--name validation (client side)-->
+					<span style="color:red" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+						<span ng-show="myForm.name.$error.required">Unos imena je obavezan.</span>Ime mora sadržavati više od 3 karaktera.
+					</span>	
+			    </div>
+
+				<!-- input job-->
+				<div class="input-prepend  form-group has success has-feedback">
+					<label class="control-label" for="inputSuccess4"></label>
+				  	<input name="desc" type="text" pattern="^([a-zA-Z0-9_ ]){3,}$" maxlength="255" class="form-control" placeholder= "Opis" ng-model="role.description"  id="inputSuccess4"/>
+				  	<span class="glyphicon glyphicon-briefcase form-control-feedback"></span></br></br>
+				  	<span style="color:red" ng-show="myForm.description.$dirty && myForm.jdescriptionb.$invalid">Opis mora sadržavati više od 3 karaktera.
+				    </span>	
+				</div>
+
+				<!-- submit button-->
+				<div class="actions">
+				  <button class="btn btn-lg btn-primary btn-block" ng-click="updateRoleR()"  ng-disabled="myForm.$invalid">Izmijeni</button>
+				</div>
+			  </form>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div id="copyright">© Copyright 2015</div>

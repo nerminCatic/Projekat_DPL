@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/star.png" type="favicon/ico" />
+
+    <title>Grafika Saran</title>
+  </head> 
+    
+    <body id="body">
+        
+
+
+        <header id="navigation" class="navbar navbar-inverse navigationbar  navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    
+                    <div class="container" ng-controller="HomeAdminController">
+                    
+                    <a href="#/home_admin" class="logo">
+                       logo 
+                    </a>
+                <!--<div class="localization-bs-en" localization-bs-en></div>-->
+                
+
+                <!-- main nav -->
+                <nav class="collapse navbar-collapse navbar-right" role="Navigation">
+                    <ul id="nav" class="nav navbar-nav">
+                        <li><a href="#/home_admin">Početna</a></li>
+                        <li><a ng-click="openUserManagement()" href><span><!--{{ 'USRMNG' | translate }}-->Uposlenici</span></a></li>
+                        <!--<li><a ng-click="openFeedback()" href><span><!--{{ 'FEEDBACKMNG' | translate }}</span>Projekti</a></li>-->
+                        <li><a ng-click="openCategory()" href><span><!--{{ 'CATEGORYMNG' | translate }}-->Projekti</span></a></li>
+                        <!--<li><a ng-click="openRoleManagement()" href><span><!--{{ 'USRROLE' | translate }}</span></a></li>-->
+                        <!--<li><a ng-click="openChartManagement()" href><span><!--{{ 'GRAF' | translate }}Poslovanje</span></a></li>-->
+                        <li><a ng-click="openChartManagement()" href><span><!--{{ 'GRAF' | translate }}-->Poslovanje</span></a></li>
+                        <li class="current"><a><span><!--{{ "CHANGE_PASS" | translate }}-->Uredi profil</span></a></li>
+                        <li><a href ng-click="logout()"><span><!--{{ "LOGOUT" | translate }}</span>-->Odjava</a></li>
+                    </ul>
+                </nav>
+                <!-- /main nav -->
+                </div>
+            </div>
+            </div>
+        </header>
+        
+</br></br>
+		<section id="showcase" class="bg-one brown">
+            <div class="container">
+                <div class="row wow fadeInDown" data-wow-duration="500ms">
+                    <div class="col-lg-12">
+                    
+                        <!-- section title -->
+                        <div class="title text-center">
+                            <h2>Promjena <span class="color">šifre</span></h2>
+                            <div class="border"></div>
+                        </div>
+                        <!-- /section title -->                     
+                    </div> <!-- /end col-lg-12 -->
+                </div> <!-- end row -->
+            </div>  <!-- end container -->
+	    <div class="container">    
+		<div style="height:500px">
+	    <div class="account-wall addprojectmng">
+
+	    <form class="form-signin form-inline" role="form" name="myForm" ng-controller="ChangePassController">
+	    	<h1 class="text-center login-title">Nova šifra</h1>
+			<!-- input current password-->
+			<div class="input-prepend  form-group has success has-feedback">
+				<label class="control-label" for="inputSuccess4"></label>
+				<input name="passwordEx" type="password" class="form-control" placeholder="Trenutna šifra" ng-model="user.password"  required id="inputSuccess4"/>
+				<span class="glyphicon glyphicon-lock form-control-feedback" style="color:black;"></span></br>
+				<!--password validation (client side)-->
+				<span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+					<span ng-show="myForm.password.$error.required">Unos pasvorda je obavezan.</span>
+				</span>	
+			</div>
+
+			<!-- input new password-->
+			<div class="input-prepend  form-group has success has-feedback">
+				<label class="control-label" for="inputSuccess4"></label>
+				<input name="password" type="password" minlength="3" class="form-control" placeholder="Nova šifra" ng-model="user.new_password" required id="inputSuccess4"/>
+				<span class="glyphicon glyphicon-lock form-control-feedback" style="color:black;"></span></br>
+				<!--password validation (client side)-->
+				<span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+					<span ng-show="myForm.password.$error.required">Unos pasvorda je obavezan.</span>Pasvord mora imati više od tri karaktera.
+				</span>	
+			</div>
+
+			<!-- input new password confirmation-->
+			<div class="input-prepend  form-group has success has-feedback">
+				<label class="control-label" for="inputSuccess4"></label>
+				<input name="passwordc" type="password" minlength="3" class="form-control" placeholder= "Potvrda šifre" ng-model="user.new_password_confirmation" required id="inputSuccess4"/>
+				<span class="glyphicon glyphicon-lock form-control-feedback" style="color:black;"></span></br>
+				<!--password validation (client side)-->
+				<span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+					<span ng-show="myForm.password.$error.required">Unos pasvorda je obavezan.</span>Pasvord mora imati više od tri karaktera.
+				</span>	
+			</div>
+
+			<!--button submit-->
+			<div class="actions">
+				  <button class="btn btn-lg btn-primary btn-block" ng-click="changePass()"  ng-disabled="form-register.$invalid">Potvrdi</button>
+			</div>
+
+			</form>
+	    </div>
+	</div>
+</div>
+</section>   <!-- End section -->
+        </body>
+        </html>

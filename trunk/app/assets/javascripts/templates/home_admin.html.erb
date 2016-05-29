@@ -1,0 +1,121 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/star.png" type="favicon/ico" />
+
+    <title>Grafika Saran</title>
+  </head> 
+    
+    <body id="body">
+        
+
+
+        <header id="navigation" class="navbar navbar-inverse navigationbar  navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    
+                    <div class="container" ng-controller="HomeAdminController">
+                    
+                    <a href="#/home_admin" class="logo">
+                       logo 
+                    </a>
+                <!--<div class="localization-bs-en" localization-bs-en></div>-->
+                
+
+                <!-- main nav -->
+                <nav class="collapse navbar-collapse navbar-right" role="Navigation">
+                    <ul id="nav" class="nav navbar-nav">
+                        <li class="current"><a href>Početna</a></li>
+                        <li><a ng-click="openUserManagement()" href><span><!--{{ 'USRMNG' | translate }}-->Uposlenici</span></a></li>
+                        <!--<li><a ng-click="openFeedback()" href><span><!--{{ 'FEEDBACKMNG' | translate }}</span>Projekti</a></li>-->
+                        <li><a ng-click="openCategory()" href><span><!--{{ 'CATEGORYMNG' | translate }}-->Projekti</span></a></li>
+                        <!--<li><a ng-click="openRoleManagement()" href><span><!--{{ 'USRROLE' | translate }}</span></a></li>-->
+                        <!--<li><a ng-click="openChartManagement()" href><span><!--{{ 'GRAF' | translate }}Poslovanje</span></a></li>-->
+                        <li><a ng-click="openChartManagement()" href><span><!--{{ 'GRAF' | translate }}-->Poslovanje</span></a></li>
+                        <li><a href ng-click="openChangePass()"><span><!--{{ "CHANGE_PASS" | translate }}-->Uredi profil</span></a></li>
+                        <li><a href ng-click="logout()"><span><!--{{ "LOGOUT" | translate }}</span>-->Odjava</a></li>
+                    </ul>
+                </nav>
+                <!-- /main nav -->
+                </div>
+            </div>
+            </div>
+        </header>
+        
+</br><br>
+<section ng-controller="HomeAdminController" id="about" class="bg-one brown">
+            <div class="container">
+                <div class="row">
+                
+                    <!-- section title -->
+                    <div class="title text-center wow fadeIn" data-wow-duration="1500ms" >
+                        <h2>Panel za <span class="color">menadžera</span></h2>
+                        <div class="border"></div>
+                    </div>
+                    <!-- /section title -->
+                    <br>
+                    <!-- About item -->
+                    <div class="col-md-4 text-center wow fadeInUp" data-wow-duration="500ms" >
+                        <a href class="admin-meni" ng-click="openUserManagement()">
+                            <div class="wrap-about">                            
+                                <div class="icon-box">
+                                    <img src="assets/group.png" class="ikona"> 
+                                </div>                  
+                                <!-- Express About Yourself -->
+                                <div class="about-content text-center">
+                                    <h3 class="ddd"><!--{{ 'USRMNG' | translate }}-->Uposlenici</h3>                             
+                                    <p><!--{{ 'USRMNGD' | translate }}-->Pregled, pretraživanje, brisanje, uređivanje svih uposlenika kompanije</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div> 
+                    <!-- End About item -->
+                    
+                    
+                    <!-- About item -->
+                    <div class="col-md-4 text-center wow fadeInUp" data-wow-duration="500ms" data-wow-delay="250ms">
+                        <a href class="admin-meni" ng-click="openCategory()">
+                            <div class="wrap-about">
+                                <div class="icon-box">
+                                    <img src="assets/Microsoft-Project-2013-icon.png" class="ikona">
+                                </div>
+                                <!-- Express About Yourself -->
+                                <div class="about-content text-center">
+                                    <h3>Projekti</h3>
+                                    <p>Unos novih, pregled i uređivanje postojećih projekata unutar kompanije</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div> 
+                    <!-- End About item -->
+                    
+                    <!-- About item -->                 
+                    <div class="col-md-4 text-center wow fadeInUp" data-wow-duration="500ms" data-wow-delay="500ms">
+                        <!--<a href class="admin-meni" ng-click="openChartManagement()">-->
+                        <a href class="admin-meni">
+                            <div class="wrap-about kill-margin-bottom">
+                                <div class="icon-box">
+                                    <img src="assets/pcoAgKMxi.png" class="ikona">
+                                </div>
+                                <!-- Express About Yourself -->
+                                <div class="about-content text-center">
+                                    <h3>Poslovanje</h3>
+                                    <p>Pregled grafika kako bi omogućili uvid u poslovanje kompanije</p>
+                                </div>
+                        </div>
+                        </a>
+                    </div> 
+                    <!-- End About item -->
+                    
+                </div>      <!-- End row -->
+            </div>      <!-- End container -->
+            <br><br>
+        </section>   <!-- End section -->
+
+        </body>
+        </html>

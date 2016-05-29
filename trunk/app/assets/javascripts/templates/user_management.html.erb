@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/star.png" type="favicon/ico" />
+
+    <title>Grafika Saran</title>
+
+  </head> 
+    
+    <body id="body">
+        
+
+
+        <header id="navigation" class="navbar navbar-inverse navigationbar  navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header"> 
+                    
+                  <div class="container" ng-controller="HomeAdminController">
+                    
+                    <a href="#/home_admin" class="logo">
+                       logo 
+                    </a>
+                    <!--<div class="localization-bs-en" localization-bs-en></div>-->
+                    <!-- main nav -->
+                    <nav class="collapse navbar-collapse navbar-right" role="Navigation">
+                        <ul id="nav" class="nav navbar-nav">
+                            <li><a href="#/home_admin">Početna</a></li>
+                            <li  class="current"><a ng-click="openUserManagement()" href><span><!--{{ 'USRMNG' | translate }}-->Uposlenici</span></a></li>
+                            <!--<li><a ng-click="openFeedback()" href><span><!--{{ 'FEEDBACKMNG' | translate }}</span>Projekti</a></li>-->
+                            <li><a ng-click="openCategory()" href><span><!--{{ 'CATEGORYMNG' | translate }}-->Projekti</span></a></li>
+                            <!--<li><a ng-click="openRoleManagement()" href><span><!--{{ 'USRROLE' | translate }}</span></a></li>-->
+                            <!--<li><a ng-click="openChartManagement()" href><span><!--{{ 'GRAF' | translate }}Poslovanje</span></a></li>-->
+                            <li><a ng-click="openChartManagement()" href><span><!--{{ 'GRAF' | translate }}-->Poslovanje</span></a></li>
+                            <li><a href ng-click="openChangePass()"><span><!--{{ "CHANGE_PASS" | translate }}-->Uredi profil</span></a></li>
+                            <li><a href ng-click="logout()"><span><!--{{ "LOGOUT" | translate }}</span>-->Odjava</a></li>
+                          </ul>
+                    </nav>
+                    <!-- /main nav -->
+                </div>
+            </div>
+            </div>
+        </header>
+        
+</br>
+
+<section id="showcase"  class="bg-one brown">
+            <div class="container">
+                <div class="row wow fadeInDown" data-wow-duration="500ms">
+                    <div class="col-lg-12">
+                      <div class="pretraga" >
+                        <div style="display:inline-block;margin-right: 10px;margin-top:-30px;float:left;">
+                         {{ 'SORT' | translate }}
+                        <select ng-model="orderProp" class="form-control" style="margin-top:5px;">
+                          <option value="name">{{ 'ORDNAME' | translate }}</option>
+                          <option value="surname">{{ 'ORDSURNAME' | translate }}</option>
+                        </select>
+                        </div>
+                        <!-- section title -->
+                        <div style="display:inline-block;margin-left: 150px;">
+                            <h2>Uposlenici <span class="color">grafike</span></h2>
+                            <div class="border"></div>
+                        </div>
+                        <!-- /section title -->
+
+                        <div style="display:inline-block;float:right;margin-top:-30px;">
+                        {{ 'SEARCH' | translate }} <input ng-model="query" class="form-control">
+                        </div>
+                      </div>
+                    </div> <!-- /end col-lg-12 -->
+                </div> <!-- end row -->
+            </div>  <!-- end container -->
+    
+
+<br>
+<div style="text-align:center;" ng-controller="RegistrationUserByManagerController">
+    {{ 'ADDNEWUSER' | translate }}
+  <a  class="nova-stavka" ng-controller="RegistrationUserByManagerController" href ng-click="registerUserWithRole()"> OVDJE</a>
+</div>
+</br></br>
+<div class="container">
+<table class="table table-striped" ng-controller="SearchUsersControler">
+    <thead>
+        <tr>
+            <th>{{ 'NAME' | translate }}</th>
+            <th>{{ 'SURNAME' | translate }}</th>
+            <th>{{ 'EMAIL' | translate }}</th>
+            <th>{{ 'JOB' | translate }}</th>
+            <th>Rola</th>
+            <th>{{ 'STATUS' | translate }}</th>
+            <th>{{ 'ACTION' | translate }}</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in users | filter:query | orderBy:orderProp">
+        <td> {{user.name}}</td>
+        <td> {{user.surname}}</td>
+        <td> {{user.email}}</td>
+        <td> {{user.job}}</td>
+        <td> {{user.role.name}}</td>
+        <td> {{user.confirmed}}</td>
+        <td>
+          <div class="actions" style="margin-left:10px;float:left;">
+            <button class="btn btn-primary btn-usr-mng" ng-click="openUpdateUser(user.id, $index)"  ng-disabled="myForm.$invalid">{{ 'CHANGE' | translate }}</button>
+          </div>
+          <div class="actions" style="float:left;">
+            <button class="btn btn-primary btn-usr-mng" ng-click="deleteUser(user.id, $index)"  ng-disabled="myForm.$invalid">{{ 'DELETE' | translate }}</button>
+          </div>
+          
+          <!--<div class="actions" >
+            <button class="btn btn-primary btn-usr-mng" ng-click="banUser(user.id, $index)"  ng-disabled="myForm.$invalid">{{ 'BAN' | translate }}</button>
+          </div>
+          <div class="actions" >
+            <button class="btn btn-primary btn-usr-mng" ng-click="unbanUser(user.id, $index)"  ng-disabled="myForm.$invalid">{{ 'UNBAN' | translate }}</button>
+          </div>-->
+        </td>
+      </tr>
+      </tbody>
+</table>
+<div>
+</section>
+</body>
+</html>
+

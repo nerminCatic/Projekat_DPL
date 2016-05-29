@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/star.png" type="favicon/ico" />
+
+    <title>Grafika Saran</title>
+  </head> 
+    
+    <body id="body">
+        
+
+
+        <header id="navigation" class="navbar navbar-inverse navigationbar  navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    
+                    <div class="container" ng-controller="HomeAdminController">
+                    
+                    <a href="#/home_admin" class="logo">
+                       logo 
+                    </a>
+                <!--<div class="localization-bs-en" localization-bs-en></div>-->
+                
+
+                <!-- main nav -->
+                <nav class="collapse navbar-collapse navbar-right" role="Navigation">
+                    <ul id="nav" class="nav navbar-nav">
+                        <li ><a href="#/home_admin">Početna</a></li>
+                        <li><a ng-click="openUserManagement()" href><span><!--{{ 'USRMNG' | translate }}-->Uposlenici</span></a></li>
+                        <!--<li><a ng-click="openFeedback()" href><span><!--{{ 'FEEDBACKMNG' | translate }}</span>Projekti</a></li>-->
+                        <li><a ng-click="openCategory()" href><span><!--{{ 'CATEGORYMNG' | translate }}-->Projekti</span></a></li>
+                        <!--<li><a ng-click="openRoleManagement()" href><span><!--{{ 'USRROLE' | translate }}</span></a></li>-->
+                        <!--<li><a ng-click="openChartManagement()" href><span><!--{{ 'GRAF' | translate }}Poslovanje</span></a></li>-->
+                        <li class="current"><a href><span><!--{{ 'GRAF' | translate }}-->Poslovanje</span></a></li>
+                        <li><a href ng-click="openChangePass()"><span><!--{{ "CHANGE_PASS" | translate }}-->Uredi profil</span></a></li>
+                        <li><a href ng-click="logout()"><span><!--{{ "LOGOUT" | translate }}</span>-->Odjava</a></li>
+                    </ul>
+                </nav>
+                <!-- /main nav -->
+                </div>
+            </div>
+            </div>
+        </header>
+        
+<br>
+<section id="about" class="bg-one brown">
+	<div class="container">
+        <div class="row">
+					<!-- section title -->
+                    <div class="title text-center wow fadeIn" data-wow-duration="1500ms" >
+                        <h2>Prikaz <span class="color">dijagrama</span></h2>
+                        <div class="border"></div>
+                    </div>
+                    <!-- /section title -->
+	<div ng-controller="ChartsController">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 lw">
+				   <h2> Projekti </h2><br>
+				   <nvd3 options="options_multibar" data="data_multibar">
+				   </nvd3>
+				 </div>
+			</div>
+			<div class="row">
+				 <div class="col-lg-4 col-md-4 lw">
+				   <h2> Komentari </h2><br>
+				   <nvd3 options="options_discretebar" data="data_discretebar">
+				   </nvd3>
+				 </div>
+			</div>
+			<div class="col-lg-8 col-md-8 lw">
+				   <h2> Zadaci kroz historiju </h2><br>
+				   <nvd3 options="options_historical" data="data_historical">
+				   </nvd3>
+			</div>
+		</div>
+
+	</div>
+	</div>
+
+</section>
+</body>
+        </html>

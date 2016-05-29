@@ -1,0 +1,172 @@
+<!--Refistration form manager side-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/star.png" type="favicon/ico" />
+
+    <title>Grafika Saran</title>
+
+  </head> 
+    
+    <body id="body">
+        
+
+
+        <header id="navigation" class="navbar navbar-inverse navigationbar  navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    
+                  <div class="container" ng-controller="HomeAdminController">
+                    
+                    <a href="#/home_admin" class="logo">
+                       logo 
+                    </a>
+                    <!--<div class="localization-bs-en" localization-bs-en></div>-->
+                    <!-- main nav -->
+                    <nav class="collapse navbar-collapse navbar-right" role="Navigation">
+                        <ul id="nav" class="nav navbar-nav">
+                            <li><a href="#/home_admin">Početna</a></li>
+                            <li  class="current"><a ng-click="openUserManagement()" href><span><!--{{ 'USRMNG' | translate }}-->Uposlenici</span></a></li>
+                            <!--<li><a ng-click="openFeedback()" href><span><!--{{ 'FEEDBACKMNG' | translate }}</span>Projekti</a></li>-->
+                            <li><a ng-click="openCategory()" href><span><!--{{ 'CATEGORYMNG' | translate }}-->Projekti</span></a></li>
+                            <!--<li><a ng-click="openRoleManagement()" href><span><!--{{ 'USRROLE' | translate }}</span></a></li>-->
+                            <!--<li><a ng-click="openChartManagement()" href><span><!--{{ 'GRAF' | translate }}Poslovanje</span></a></li>-->
+                            <li><a href><span><!--{{ 'GRAF' | translate }}-->Poslovanje</span></a></li>
+                            <li><a href ng-click="openChangePass()"><span><!--{{ "CHANGE_PASS" | translate }}-->Uredi profil</span></a></li>
+                            <li><a href ng-click="logout()"><span><!--{{ "LOGOUT" | translate }}</span>-->Odjava</a></li>
+                          </ul>
+                    </nav>
+                    <!-- /main nav -->
+                </div>
+            </div>
+            </div>
+        </header>
+
+</br></br></br></br></br></br>
+<section class="bg-one brown">
+	<div class="container">
+        <div class="row wow fadeInDown" data-wow-duration="500ms">
+            <div class="col-lg-12">
+                    
+                <!-- section title -->
+                <div class="title text-center add-user">
+                    <h2>Kreiranje novog <span class="color">uposlenika</span></h2>
+                    <div class="border"></div>
+                </div>
+                <!-- /section title -->
+                        
+            </div> <!-- /end col-lg-12 -->
+        </div> <!-- end row -->
+    </div>  <!-- end container -->
+	<div class="text-center">
+        <div class=" wow bounce animated">      
+            <div style="height:500px"> 
+            	     
+	    			<div class="account-wall addusermng">
+						<form class="form-signin form-inline" role="form" name="myForm" ng-controller="RegistrationUserByManagerController">
+							<h1 class="text-center login-title">Novi uposlenik </h1>
+						  	<!-- input name-->
+						  	<div class="input-prepend form-group has success has-feedback">
+						  		<label class="control-label" for="inputSuccess4"></label>
+							  	<input name="name" pattern="^([A-z]){3,}$" maxlength="20" class="form-control" type="text" placeholder="Ime" ng-model="user.name" required autofocus id="inputSuccess4"/>
+			          			<span class="glyphicon glyphicon-user form-control-feedback" style="color:black"></span></br>
+							  	<!--name validation (client side)-->
+								<span style="color:red" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+									<span ng-show="myForm.name.$error.required">Unos imena je obavezan.</span>Ime mora sadržavati više od 3 karaktera.
+								</span>	
+						    </div>
+
+							<!-- input surname-->
+							<div class="input-prepend form-group has success has-feedback">
+								<label class="control-label" for="inputSuccess4"></label>
+							  	<input name="surname" pattern="^([A-z]){3,}$" maxlength="25" type="text" class="form-control" placeholder="Prezime" ng-model="user.surname" required id="inputSuccess4"/>
+			          			<span class="glyphicon glyphicon-user form-control-feedback" style="color:black"></span></br>
+							  	<!--surname validation (client side)-->
+							  	<span style="color:red" ng-show="myForm.surname.$dirty && myForm.surname.$invalid">
+							    	<span ng-show="myForm.surname.$error.required">Unos prezimena je obavezan.</span>Prezime mora sadržavati više od 3 karaktera.
+							    </span>	
+							</div>
+
+							<!-- input job-->
+							<div class="input-prepend form-group has success has-feedback">
+								<label class="control-label" for="inputSuccess4"></label>
+							  	<input name="job" type="text" pattern="^([A-z]){2,}$" maxlength="35" class="form-control" placeholder= "Posao" ng-model="user.job" id="inputSuccess4">
+			          			<span class="glyphicon glyphicon-briefcase form-control-feedback" style="color:black"></span></br>
+							  	<!--job validation (client side)-->
+							  	<span style="color:red" ng-show="myForm.job.$dirty && myForm.job.$invalid">Posao mora sadržavati više od 2 karaktera.
+							    </span>	
+							</div>
+
+							<!-- input adress-->
+							<div class="input-prepend form-group has success has-feedback">
+								<label class="control-label" for="inputSuccess4"></label>
+							  	<input name="adress" type="text" class="form-control" placeholder="Adresa" ng-model="user.adress" id="inputSuccess4"/>
+			          			<span class="glyphicon glyphicon-map-marker form-control-feedback" style="color:black"></span></br>
+							</div>
+
+							<!-- input phone-->
+							<div class="input-prepend form-group has success has-feedback">
+								<label class="control-label" for="inputSuccess4"></label>
+							  	<input name="phone" type="text" class="form-control" placeholder="Telefon" ng-model="user.phone" id="inputSuccess4"/>
+			          			<span class="glyphicon glyphicon-home form-control-feedback" style="color:black"></span></br>
+							</div>
+
+							<!-- input email-->
+							<div class="input-prepend form-group has success has-feedback">
+								<label class="control-label" for="inputSuccess4"></label>
+							  	<input name="email" type="email" class="form-control" placeholder="E-mail" ng-model="user.email" required id="inputSuccess4"/>
+			          			<span class="glyphicon glyphicon-envelope form-control-feedback" style="color:black"></span></br>
+							  	<!--email validation (client side)-->
+							  	<span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+									<span ng-show="myForm.email.$error.required">Unos emaila je obavezan.</span>
+									<span ng-show="myForm.email.$error.email">Format email addrese nije dobar.</span>
+								</span>	
+							</div>
+
+							<!-- input role -->
+							<div class="input-prepend form-group has success has-feedback">
+								<label class="control-label" for="inputSuccess4"></label>
+			                    <select class="form-control" ng-model="role" ng-options="role.name for role in roles track by role.id" required id="inputSuccess4"/>
+			          			</br>
+			                    </select>
+			                </div>
+
+							<!-- input password-->
+							<div class="input-prepend form-group has success has-feedback">
+								<label class="control-label" for="inputSuccess4"></label>
+							  	<input name="password" type="password" minlength="3" class="form-control" placeholder="Šifra" ng-model="user.password"  required id="inputSuccess4"/>
+			          			<span class="glyphicon glyphicon-lock form-control-feedback" style="color:black"></span></br>
+							  	<!--password validation (client side)-->
+							  	<span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+							    <span ng-show="myForm.password.$error.required">Unos pasvorda je obavezan.</span>Pasvord mora imati više od tri karaktera.
+							    </span>	
+							</div>
+
+							<!-- input password confirmation-->
+							<div class="input-prepend form-group has success has-feedback">
+								<label class="control-label" for="inputSuccess4"></label>
+				      			<span class="add-on"><i class="icon-lock"></i></span>
+							  	<input name="passwordc" type="password" class="form-control" placeholder= "Potvrda šifre" ng-model="user.password_confirmation" id="inputSuccess4"/>
+			          			<span class="glyphicon glyphicon-lock form-control-feedback" style="color:black"></span></br>
+							</div>
+
+							<!--recaptcha-->
+							<!--<div class="g-recaptcha" data-sitekey="6LccAAUTAAAAAFP9BYFC4qFicss1-I2v4M9-sp1P"></div>
+							</br>-->
+
+							<!-- submit button-->
+							<div class="actions">
+							  <button class="btn btn-lg btn-primary btn-block" ng-click="registerUser()"  ng-disabled="myForm.$invalid">Kreiraj</button>
+							</div>
+						</form>
+					</div>
+				
+			</div>
+		</div>
+	</div>
+</section>
+</body>
+</html>

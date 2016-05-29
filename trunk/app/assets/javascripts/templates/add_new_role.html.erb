@@ -1,0 +1,88 @@
+<head>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+<div  class="bcgnonee">
+<nav class="navbar navbar-custom navbar-fixed-top ribbon nblue" role="navigation">
+    <div class="localization-bs-en" localization-bs-en></div>
+     <div class="container" ng-controller="HomeAdminController">
+        <div class="navbar-header page-scroll">
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+              <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="#/home_admin">
+           <h1 class="naslov1">eSTAMPARIJA</h1>
+        </a>
+          </div>
+          <div class="collapse navbar-collapse navbar-right navbar-main-collapse navbar-font">
+           <ul class="nav navbar-nav navbar-font">
+
+            <li class="dropdown">
+              <a href class="dropdown-toggle" data-toggle="dropdown"><span>{{ "ADMIN" | translate }}</span> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a ng-click="openUserManagement()" href><span>{{ 'USRMNG' | translate }}</span></a></li>
+                <li><a ng-click="openFeedback()" href><span>{{ 'FEEDBACKMNG' | translate }}</span></a></li>
+                <li><a ng-click="openCategory()" href><span>{{ 'CATEGORYMNG' | translate }}</span></a></li>
+                <li><a ng-click="openRoleManagement()" href><span>{{ 'USRROLE' | translate }}</span></a></li>
+                <li><a ng-click="openChartManagement()" href><span>{{ 'GRAF' | translate }}</span></a></li>
+              </ul>
+            </li>
+          <li><a href ng-click="openChangePass()"><span>{{ "CHANGE_PASS" | translate }}</span></a></li>
+         <li><a href ng-click="logout()"><span>{{ "LOGOUT" | translate }}</span></a></li>
+            </ul>
+          </div>
+       </div>
+   </nav><br><br><br><br><br>
+     <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{ alert.msg }}</alert>
+<br></br>
+</br>
+	<div class="heading-contact-title">
+            <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="wow bounceInDown animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">
+                    <div class="section-heading">
+                    <h2>{{ 'UROLE' | translate }}</h2>
+                    <i class="fa fa-2x fa-angle-down"></i>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </div>
+	<div class="container"> 
+	<div class="bcgnone" style="height:600px">   
+	    <div class="new-category-wall">
+			<form class="form-register form-inline" role="form" name="myForm" ng-controller="CreateRoleController">
+				<!-- input name-->
+			  	<div class="input-prepend form-group has success has-feedback">
+			  		<label class="control-label" for="inputSuccess4"></label>
+			  		<input name="name" pattern="^([a-zA-Z0-9_ ]){3,}$" maxlength="20" class="form-control" type="text" placeholder="Ime" ng-model="role.name" required autofocus id="inputSuccess4"/>
+          			<span class="glyphicon glyphicon-user form-control-feedback"></span></br></br>
+				  	<!--name validation (client side)-->
+					<span style="color:red" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+						<span ng-show="myForm.name.$error.required">Unos imena je obavezan.</span>Ime mora sadržavati više od 3 karaktera.
+					</span>	
+			    </div>
+			    <!-- input description-->
+			  	<div class="input-prepend form-group has success has-feedback">
+			  		<label class="control-label" for="inputSuccess4"></label>
+			  		<input name="desc" type="text" pattern="^([a-zA-Z0-9_ ]){3,}$" maxlength="255" class="form-control" placeholder= "Opis" ng-model="role.description"  id="inputSuccess4"/><br>
+          			<span class="glyphicon glyphicon-blog form-control-feedback"></span></br></br>
+				  	<!--name validation (client side)-->
+					<span style="color:red" ng-show="myForm.description.$dirty && myForm.jdescriptionb.$invalid">Opis mora sadržavati više od 3 karaktera.
+				    </span>	
+			    </div>
+
+				<!-- submit button-->
+				<div class="actions">
+				  <button class="btn btn-lg btn-primary btn-block" ng-click="createRoleR()"  ng-disabled="myForm.$invalid">Kreiraj</button>
+				</div>
+			  </form>
+			</div>
+		</div>
+		</div>
+	<div id="copyright">© Copyright 2015</div>
+	</div>
+</body>

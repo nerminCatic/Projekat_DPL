@@ -1,0 +1,127 @@
+<!--home page-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/star.png" type="favicon/ico" />
+
+    <title>Grafika Saran</title>
+  </head> 
+    
+    <body id="body" class="user">
+<header id="navigation" class="navbar navbar-inverse navigationbar  navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    
+                    <div class="container" ng-controller="HomeController">
+                    
+                    <a href="#/home_admin" class="logo">
+                       logo 
+                    </a>
+                <!--<div class="localization-bs-en" localization-bs-en></div>-->
+                
+
+                <!-- main nav -->
+                <nav class="collapse navbar-collapse navbar-right" role="Navigation">
+                    <ul id="nav" class="nav navbar-nav usernav">
+                        <li class="current"><a href ng-click="openHome()"><span>{{ "HOME" | translate }}</span></a></li>
+                        <li><a href ng-click="openChangePass()"><span>{{ "CHANGE_PASS" | translate }}</span></a></li>
+                        <li><a href ng-click="logout()"><span>{{ "LOGOUT" | translate }}</span></a></li>
+                    </ul>
+                </nav>
+                <!-- /main nav -->
+                </div>
+            </div>
+            </div>
+        </header>
+
+
+
+<section id="task" class="bg-one brown">
+<br><br><br> 
+<div class="container" ng-controller="QuestionsController">
+  <button class="btn btn-lg btn-primary btn-block" ng-click="editQuestion()">Oznaci zadatak kao zavrsen</button>
+</div>
+<div classs="container"  ng-controller="CommentsController">
+<!-- section title -->
+                        <div class="title text-center add-user">
+                            <h2>Detalji o <span class="coloru">zadatku</span></h2>
+                            <div class="border"></div>
+                        </div>
+                        <!-- /section title -->    
+
+    <div class="container">
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Naziv zadatka</th>
+            <th>Projekat</th>
+            <th>Komentari</th>
+            <th>Zavrseno</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+      <tr >
+      
+        <td>  <h4 class="list-group-item-heading"> {{question.name}}</h4> 
+                        <p class="list-group-item-text" style="font-size:11px;margin-top:10px;"><span class="glyphicon glyphicon-pencil"></span> 
+                        {{ question.user.name}} {{ question.user.surname}} &nbsp&nbsp&nbsp
+                        <span class="glyphicon glyphicon-time"></span> {{ question.time_created }}
+                        <div style="margin-top:15px">
+                        Opis: {{question.description}}
+                        </div>
+                        <div style="margin-top:15px">
+                        Zaduženi uposlenik: {{question.uposlenik.name}} {{question.uposlenik.surname}}
+                        </div>
+                        </td>
+        <td> {{ question.category.name }}</td>
+        <td> {{question.number_of_comments}}</td>
+        <td> 
+          {{question.status}} 
+        </td>
+             
+      </tr>
+      <tr>
+      <td colspan="4"></td>
+      </tr>
+      <tr>
+     <td colspan="4"><div href="#" ng-repeat="comment in comments | filter:query">
+               <div class="row">
+                   <div class="col-lg-12 col-md-12">
+                      <p style="font-size:11px;">
+                      <span class="glyphicon glyphicon-pencil"></span> 
+                        {{ comment.user.name}} {{ comment.user.surname}} &nbsp&nbsp&nbsp
+                        <span class="glyphicon glyphicon-time"></span> {{ comment.time_created }}
+                        </p>
+                      <div style="margin-top:10px;"> {{comment.content}} </div>
+                    </div>
+                </div>
+              </div>
+              </td>
+              </tr>
+              <tr>
+              <td colspan="4"><div href="#" >
+               <div class="row">
+                    <div class="col-lg-11 col-md-11">
+                        <label> Novi komentar</label>
+                        <input class="form-control comment" placeholder="Napišite komentar..." ng-model="cont">
+                    </div>
+                    <div class="col-lg-1 col-md-1" style="padding-left:0;">
+                      <button type="button" class="btn btn-primary" ng-click="postComment()" >Post</button>
+                    </div>
+                </div>
+              </div>
+
+</td>
+</tr>
+</tbody>
+</table>
+    
+</div>
+
+</section>
+</body>
+        </html>

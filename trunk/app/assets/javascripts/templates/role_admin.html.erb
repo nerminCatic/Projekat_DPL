@@ -1,0 +1,84 @@
+<head>
+    <!--font for icon in circle button on home page-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<!--navbar-->
+<nav class="navbar navbar-custom navbar-fixed-top ribbon nblue" role="navigation">
+    <div class="localization-bs-en" localization-bs-en></div>
+     <div class="container" ng-controller="HomeAdminController">
+        <div class="navbar-header page-scroll">
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+              <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="#/home_admin">
+           <h1 class="naslov1">eSTAMPARIJA</h1>
+        </a>
+          </div>
+          <div class="collapse navbar-collapse navbar-right navbar-main-collapse navbar-font">
+           <ul class="nav navbar-nav navbar-font">
+
+            <li class="dropdown">
+              <a href class="dropdown-toggle" data-toggle="dropdown"><span>{{ "ADMIN" | translate }}</span> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a ng-click="openUserManagement()" href><span>{{ 'USRMNG' | translate }}</span></a></li>
+                <li><a ng-click="openFeedback()" href><span>{{ 'FEEDBACKMNG' | translate }}</span></a></li>
+                <li><a ng-click="openCategory()" href><span>{{ 'CATEGORYMNG' | translate }}</span></a></li>
+                <li><a ng-click="openRoleManagement()" href><span>{{ 'USRROLE' | translate }}</span></a></li>
+                <li><a ng-click="openChartManagement()" href><span>{{ 'GRAF' | translate }}</span></a></li>
+              </ul>
+            </li>
+          <li><a href ng-click="openChangePass()"><span>{{ "CHANGE_PASS" | translate }}</span></a></li>
+         <li><a href ng-click="logout()"><span>{{ "LOGOUT" | translate }}</span></a></li>
+            </ul>
+          </div>
+       </div>
+   </nav>
+</br></br></br>
+</br></br>
+<div class="pretraga" style="margin-top:40px;text-align:center;">
+  <div style="display:inline-block;margin-right: 10px;">
+   {{ 'SORT' | translate }}
+  <select ng-model="orderProp" class="form-control" style="margin-top:5px;">
+    <option value="name">{{ 'ORDNAME' | translate }}</option>
+    <option value="description">Opis</option>
+  </select>
+  </div>
+
+  <div style="display:inline-block;">
+  {{ 'SEARCH' | translate }} <input ng-model="query" class="form-control">
+  </div>
+
+</div>
+<br>
+<div style="text-align:center;" ng-controller="RegistrationUserByManagerController">
+  Dodavanje nove role:
+  <a href   ng-controller="CreateRoleController" ng-click="createRoleRead()"  ng-disabled="myForm.$invalid"> OVDJE</a>
+</div>
+</br></br>
+
+<table class="table table-hover table-condensed tabela1" ng-controller="SearchRoleControler">
+    <thead>
+        <tr>s
+            <th>Naziv</th>
+            <th>Opis</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="role in roles | filter:query | orderBy:orderProp">
+        <td> {{role.name}}</td>
+        <td> {{role.description}}</td>
+        <td>
+          <div class="actions" style="margin-left:10px;float:right;">
+            <button class="btn btn-primary btn-usr-mng" ng-click="deleteRole(role.id, $index)"  ng-disabled="myForm.$invalid">Obriši</button>
+          </div> &nbsp &nbsp
+          <div class="actions" style="float:right;"> 
+          <button class="btn btn-primary btn-usr-mng" ng-controller="UpdateRoleControler" ng-click="updateRoleRead(role.id)"  ng-disabled="myForm.$invalid">Izmijeni</button>
+          </div>
+
+        </td>
+      </tr>
+</table>
+<div id="copyright">© Copyright 2015</div>

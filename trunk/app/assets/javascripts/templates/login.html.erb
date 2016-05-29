@@ -1,0 +1,81 @@
+<!--Login form-->
+  
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Grafika Saran</title>
+  </head>
+  <body>
+
+    <!--== 4. Header ==-->
+
+        <section class="header" id="header">
+            <div class="navigationbar  navbar-fixed-top">
+                <div class="container">
+                    <a href="#/welcome" class="logo">
+                       logo 
+                    </a>
+                </div> <!-- /.container -->
+            </div> <!-- /.navigation-bar -->
+            <div class="header-description text-center">
+                <div class="header-content wow bounce animated">
+                    
+                  <div class="container"> 
+                  <img src="assets/Neckstrap_silver_Tl__x290.png" class="akreditacija">  
+    <div style="height:600px">
+    <div class="account-wall">
+        <form class="form-signin form-inline" role="form" name="myForm" ng-controller="LoginController">
+        <!--title-->
+        <h1 class="text-center login-title">Prijava</h1>
+
+        <!--input email-->
+        <div class="input-prepend form-group has success has-feedback">
+          <label class="control-label" for="inputSuccess4"></label>
+          <input name="email" type="email" class="form-control" placeholder="E-mail" ng-model="user.email" required autofocus id="inputSuccess4">
+          <span class="glyphicon glyphicon-envelope form-control-feedback" style="color:black"></span></br>
+          <!--email validation-->
+          <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+            <span ng-show="myForm.email.$error.required">Unos emaila je obavezan.</span>
+            <span ng-show="myForm.email.$error.email">Format email addrese nije dobar.</span>
+          </span> 
+        </div>
+
+        <!-- input password-->
+        <div class="form-group has success has-feedback">
+          <label class="control-label" for="inputSuccess4"></label>
+          <input name="password" type="password" minlength="3" class="form-control" placeholder="Šifra" ng-model="user.password"  required id="inputSuccess4">
+          <span class="glyphicon glyphicon-lock form-control-feedback" style="color:black"></span><br>
+          <!--password validation (client side)-->
+          <span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+              <span ng-show="myForm.password.$error.required">Unos pasvorda je obavezan.</span>Pasvord mora imati više od 3 karaktera.
+          </span> 
+        </div>
+
+        <!--checkbox rememer me?-->
+        <label class="checkbox pull-left">
+            <input type="checkbox" value="remember-me">
+            <!--{{ 'REMEMBER_ME' | translate }}-->Zapamti me
+        </label>
+
+        <!--submit button-->
+        <button class="btn btn-lg btn-primary btn-block" ng-click="loginUser()"  ng-disabled="loginForm.$invalid">    <!--{{ 'LOGIN' | translate }}-->Prijava
+        </button>
+
+        <!--link for registration form-->
+        <a class="pull-right new-account color" href ng-click="openRegistration()">{{ 'REGISTER' | translate }}</a>
+        <!--link for forgot password form-->
+        <a class="pull-left new-account color" href ng-click="openPassReset()">{{ 'FORGOT_PASS' | translate }}</a>
+
+        </form>
+      </div>
+  </div>
+  </div>
+
+
+                </div> <!-- /.header-content -->   
+            </div> <!-- /.header-description -->
+        </section> <!-- /#header -->
+
+  </body>
+</html>

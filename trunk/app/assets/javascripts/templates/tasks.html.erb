@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/star.png" type="favicon/ico" />
+
+    <title>Grafika Saran</title>
+  </head> 
+    
+    <body id="body">
+        
+
+
+        <header id="navigation" class="navbar navbar-inverse navigationbar  navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    
+                    <div class="container" ng-controller="HomeAdminController">
+                    
+                    <a href="#/home_admin" class="logo">
+                       logo 
+                    </a>
+                <!--<div class="localization-bs-en" localization-bs-en></div>-->
+                
+
+                <!-- main nav -->
+                <nav class="collapse navbar-collapse navbar-right" role="Navigation">
+                    <ul id="nav" class="nav navbar-nav">
+                        <li ><a href="#/home_admin">Početna</a></li>
+                        <li><a ng-click="openUserManagement()" href><span><!--{{ 'USRMNG' | translate }}-->Uposlenici</span></a></li>
+                        <!--<li><a ng-click="openFeedback()" href><span><!--{{ 'FEEDBACKMNG' | translate }}</span>Projekti</a></li>-->
+                        <li class="current"><a ng-click="openCategory()" href><span><!--{{ 'CATEGORYMNG' | translate }}-->Projekti</span></a></li>
+                        <!--<li><a ng-click="openRoleManagement()" href><span><!--{{ 'USRROLE' | translate }}</span></a></li>-->
+                        <!--<li><a ng-click="openChartManagement()" href><span><!--{{ 'GRAF' | translate }}Poslovanje</span></a></li>-->
+                        <li><a ng-click="openChartManagement()" href><span><!--{{ 'GRAF' | translate }}-->Poslovanje</span></a></li>
+                        <li><a href ng-click="openChangePass()"><span><!--{{ "CHANGE_PASS" | translate }}-->Uredi profil</span></a></li>
+                        <li><a href ng-click="logout()"><span><!--{{ "LOGOUT" | translate }}</span>-->Odjava</a></li>
+                    </ul>
+                </nav>
+                <!-- /main nav -->
+                </div>
+            </div>
+            </div>
+        </header>
+        
+
+<section id="about" class="bg-one brown">
+<div ng-controller="TasksController">
+
+<div class="container">
+                <div class="row wow fadeInDown" data-wow-duration="500ms">
+                    <div class="col-lg-12">
+                      <div class="pretraga" >
+                        <!-- section title -->
+                        <div style="display:inline-block;margin-left: 430px;">
+                            <h2>Zadaci <span class="color">uposlenika</span></h2>
+                            <div class="border"></div>
+                        </div>
+                        <!-- /section title -->
+
+                        <div style="display:inline-block;float:right;">
+                        {{ 'SEARCH' | translate }} <input ng-model="query" class="form-control">
+                        </div>
+                      </div>
+                    </div> <!-- /end col-lg-12 -->
+                </div> <!-- end row -->
+            </div>  <!-- end container -->
+
+<div>
+</div>
+    
+    </br>  
+    <div style="text-align:center;">Dodavanje novog zadatka: <a href class="nova-stavka" ng-controller="HomeAdminController" ng-click="newTask()">OVDJE</a>. </div>
+<br>
+    <div class="container">
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Naziv zadatka</th>
+            <th>Projekat</th>
+            <th>Komentari</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+      <tr ng-repeat="question in questions | filter:query | orderBy:orderProp">
+      
+        <td> <a href class="tablea" ng-click="showQuestion(question.id)" > <h4 class="list-group-item-heading"> {{question.name}}</h4>   </a>
+                        <p class="list-group-item-text" style="font-size:11px;margin-top:10px;"><span class="glyphicon glyphicon-pencil"></span> 
+                        {{ question.user.name}} {{ question.user.surname}} &nbsp&nbsp&nbsp
+                        <span class="glyphicon glyphicon-time"></span> {{ question.time_created }}</td>
+        <td> {{ question.category.name }}</td>
+        <td> {{question.number_of_comments}}</td>
+        <td> {{question.status}}</td>
+      </tr>
+      </tbody>
+</table>
+</div>
+   
+</section>
+</body>
+        </html>

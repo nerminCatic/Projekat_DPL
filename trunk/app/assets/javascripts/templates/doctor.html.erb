@@ -1,0 +1,90 @@
+<!--home page for admin-->
+<head>
+    <!--font for icon in circle button on home page-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<!--navbar-->
+<nav class="navbar navbar-custom navbar-fixed-top ribbon nblue" role="navigation">
+    <div class="localization-bs-en" localization-bs-en></div>
+     <div class="container" ng-controller="HomeAdminController">
+        <div class="navbar-header page-scroll">
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+              <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="#/sestra">
+           <h1 class="naslov1">eSTAMPARIJA</h1>
+        </a>
+          </div>
+          <div class="collapse navbar-collapse navbar-right navbar-main-collapse navbar-font">
+           <ul class="nav navbar-nav navbar-font">
+           <li class="active"><a href><span>{{ "ORDERS" | translate }}</span></a></li>
+          <li><a href ng-click="openChangePass()"><span>{{ "CHANGE_PASS" | translate }}</span></a></li>
+         <li><a href ng-click="logout()"><span>{{ "LOGOUT" | translate }}</span></a></li>
+            </ul>
+          </div>
+       </div>
+   </nav>
+<!--/.navbar-->
+
+</br>
+</br></br>
+</br></br>
+<div class="pretraga" style="margin-top:40px;text-align:center;">
+  <div style="display:inline-block;margin-right: 10px;">
+    {{ 'SORT' | translate }}
+    <select ng-model="orderProp" class="form-control" style="margin-top:5px;">
+      <option value="user_patient_id">Pacijent</option>
+      <option value="user_doctor_id">Doktor</option>
+      <option value="appointment_date">Termin rezervacije</option>
+    </select>
+  </div>
+
+  <div style="display:inline-block;">
+    {{ 'SEARCH' | translate }} <input ng-model="query" style="margin-top:5px;" class="form-control">
+    </div>
+</div>
+
+
+</br></br>
+<table class="table table-hover table-condensed tabela" ng-controller="SearchReservationsControler">
+    <thead>
+        <tr>
+            <th>Pacijent</th>
+            <th>Doktor</th>
+            <th>Termin</th>
+            <th>Opis</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="reservation in reservations | filter:query | orderBy:orderProp">
+        <td> {{reservation.user_patient.name}} {{reservation.user_patient.surname}}</td>
+        <td> {{reservation.user_doctor.name }} {{reservation.user_doctor.surname }}</td>
+        <td> {{reservation.appointment_date | date:'dd-MM-yyyy HH:mm'}}</td>
+        <td> {{reservation.description}}</td>
+        <td> {{reservation.status}}</td>
+        <td>
+          
+        </td>
+      </tr>
+
+</table>
+<!--
+<div class="heading-contact-title">
+            <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="wow bounceInDown animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">
+                    <div class="section-heading">
+                    <h2>{{ 'OPT' | translate }}</h2>
+                    <i class="fa fa-2x fa-angle-down"></i>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+</br></br>
+-->
+<div id="copyright">© Copyright 2015</div>
